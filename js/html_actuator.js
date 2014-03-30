@@ -5,19 +5,12 @@ function HTMLActuator() {
   this.messageContainer = document.querySelector(".game-message");
   this.info             = document.querySelector(".info");  
   this.dogeSays = document.querySelector(".doge-says");
-  this.adSpace = document.querySelector(".shout-out");
 
   this.score = 0;
 }
 
 var dogeSayings = ['such compiler', 'so prolog', 'many predigotos', 'very assembler', 'great fork', 'such grade', 'very laughter', 'grades', 'very study', 'such classes', 'concern' ,'bewildered',
 'many classes', 'so good', 'very scores', 'so scoring', 'so comic sans', 'such hmtl', 'such matching', 'so studied', 'very studied', 'such comic sans' ,'such natural',]
-
-var ads = [
-
-  '<a href="https://itunes.apple.com/us/app/snack-compass/id646138186?mt=8&ign-mpt=uo%3D4" target="_blank">Like Pizza?</a>',
-  '<a href="http://maxhash.com/doge" target="_blank">Check out everything hashtagged Doge!</a>',
-]
 
 HTMLActuator.prototype.actuate = function (grid, metadata) {
   var self = this;
@@ -138,11 +131,7 @@ HTMLActuator.prototype.updateScore = function (score) {
     var color = 'color: rgb(' + Math.round(Math.random() * 255) + ', ' + Math.round(Math.random() * 255) + ', ' + Math.round(Math.random() * 255) + ');'
     var styleString = left + top + color
     messageElement.setAttribute('style', styleString);
-    this.dogeSays.appendChild(messageElement);
-    if (difference > 4) {
-     this.adSpace.innerHTML = ads[Math.floor(Math.random() * ads.length)]
-    }
-    
+    this.dogeSays.appendChild(messageElement);    
   }
 };
 
@@ -152,7 +141,7 @@ HTMLActuator.prototype.updateBestScore = function (bestScore) {
 
 HTMLActuator.prototype.message = function (won) {
   var type    = won ? "game-won" : "game-over";
-  var message = won ? "You win!" : "Game over!";
+  var message = won ? "Passaste!" : Math.random() < 0.5 ? "Chumbaste!" : "Para o ano há mais";
 
   this.messageContainer.classList.add(type);
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;
